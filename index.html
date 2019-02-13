@@ -22,8 +22,12 @@
             </label>
             <button onclick="onResetCanvas()" class="btn btn-reset">Reset</button>
             <button onclick="onToggleEraser()" class="btn btn-eraser">⌫</button>
+            <select onchange="onChooseDrawTool(this.value)">
+                <option value="pencil">✎</option>
+                <option value="pencil">✎</option>
+            </select>
         </div>
-        <canvas id="canvas" width="640" height="480" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
+        <canvas id="canvas" width="640" height="480" onmousedown="onMouseDown(event)" onmouseup="onMouseUp(event)" onmousemove="onMouseMovement(event)">
 
         </canvas>
         <footer class="app-footer">

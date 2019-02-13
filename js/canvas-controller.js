@@ -1,7 +1,7 @@
 'use strict';
 var gCanvas = document.querySelector('#canvas');
 var gCtx = gCanvas.getContext('2d');
-var gIsBeginPath = false;
+var gIsDrawing = false;
 var gIsErasing = false;
 
 
@@ -13,24 +13,24 @@ function onMouseMovement(ev) {
 
     xAxis.innerText = x;
     yAxis.innerText = y;
-    if (gIsBeginPath) {
+    if (gIsDrawing) {
         gCtx.lineTo(x, y);
         gCtx.stroke();
     } else return;
 }
 
-function onTogglePath(ev) {
+function onMouseUp(ev) {
     ev.stopPropagation();
-    if (!gIsBeginPath) {
-        var x = ev.offsetX;
-        var y = ev.offsetY;
-        gCtx.beginPath();
-        gCtx.moveTo(x, y);
-        gIsBeginPath = true;
-    } else {
-        gIsBeginPath = false;
-        gCtx.closePath();
-    }
+    gIsDrawing = false;
+    gCtx.closePath();
+}
+function onMouseDown(ev) {
+    ev.stopPropagation();
+    var x = ev.offsetX;
+    var y = ev.offsetY;
+    gCtx.beginPath();
+    gCtx.moveTo(x, y);
+    gIsDrawing = true;
 }
 
 function onColorChange(color) {
@@ -55,7 +55,7 @@ function onToggleEraser() {
 function onCheckMousePos(ev) {
     let targetId = ev.target.id;
     if (targetId !== 'canvas') {
-        gIsBeginPath = false;
+        gIsDrawing = false;
         gCtx.closePath();
     }
 }
