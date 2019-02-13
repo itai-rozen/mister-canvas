@@ -11,7 +11,6 @@ function onMouseMovement(ev) {
     var yAxis = document.querySelector('.mouse-y');
     var x = ev.offsetX;
     var y = ev.offsetY;
-
     xAxis.innerText = x;
     yAxis.innerText = y;
     if (gIsDrawing) {
@@ -19,6 +18,7 @@ function onMouseMovement(ev) {
         if (gIsErasing) erasePath(x, y);
         else if (gTool === 'pencil') drawPencil();
         else if (gTool === 'brush') drawBrush(x,y);
+        else if (gTool === 'rect') drawRect(x,y);
     } else return;
 }
 
@@ -44,7 +44,11 @@ function drawBrush(x,y){
 }
 
 function drawRect(x,y){
-    gCtx.rect()
+    gCtx.rect(x-5,y-10,x+5,y+10);
+    gCtx.stroke();
+    gCtx.closePath();
+    gCtx.fill();
+    gCtx.beginPath();
 }
 
 function onMouseUp(ev) {
@@ -82,6 +86,12 @@ function onToggleEraser() {
     }
 }
 
+function setRandImage(){
+    let rand = parseInt(Math.random() * 4);
+    let img = new Image();
+    img.src = `img/${rand}.jpg`
+    gCtx.drawImage(img,0,0,gCanvas.height,gCanvas.width);
+}
 
 
 
