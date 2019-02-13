@@ -1,21 +1,33 @@
 'use strict';
-var gCanvas = document.querySelector('#canvas');
-var gCtx = gCanvas.getContext('2d');
-var gIsDrawing = false;
-var gIsErasing = false;
-var gTool = 'pencil';
+var gCanvas;
+var gCtx;
+var gIsDrawing;
+var gIsErasing;
+var gTool;
 
+function initCanvas() {
+    gCanvas = document.querySelector('#canvas');
+    gCtx = gCanvas.getContext('2d');
+    gIsDrawing = false;
+    gIsErasing = false;
+    gTool = 'pencil';
+}
 
 function onMouseMovement(ev) {
     var x = ev.offsetX;
     var y = ev.offsetY;
     if (gIsDrawing) {
         gCtx.lineTo(x, y);
-        if (gIsErasing) erasePath(x, y);
-        else if (gTool === 'pencil') drawPencil();
-        else if (gTool === 'brush') drawBrush(x, y);
-        else if (gTool === 'rect') drawRect(x, y);
+        drawWithTool(x, y);
     } else return;
+}
+
+function drawWithTool(x, y) {
+    if (gIsErasing) erasePath(x, y);
+    else if (gTool === 'pencil') drawPencil();
+    else if (gTool === 'brush') drawBrush(x, y);
+    else if (gTool === 'rect') drawRect(x, y);
+    else return;
 }
 
 function drawPencil() {
@@ -58,6 +70,7 @@ function onMouseUp(ev) {
     gIsDrawing = false;
     gCtx.closePath();
 }
+
 function onMouseDown(ev) {
     ev.stopPropagation();
     var x = ev.offsetX;
@@ -90,11 +103,9 @@ function onSetRandImage() {
     let rand = parseInt(Math.random() * 4);
     let img = new Image();
     img.src = `./img/${rand}.jpg`;
-    gCtx.clearRect(0,0, gCanvas.width, gCanvas.height);
+    gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
-
-
 
 function onCheckMousePos(ev) {
     let targetId = ev.target.id;
