@@ -13,8 +13,8 @@ function onMouseMovement(ev) {
         gCtx.lineTo(x, y);
         if (gIsErasing) erasePath(x, y);
         else if (gTool === 'pencil') drawPencil();
-        else if (gTool === 'brush') drawBrush(x,y);
-        else if (gTool === 'rect') drawRect(x,y);
+        else if (gTool === 'brush') drawBrush(x, y);
+        else if (gTool === 'rect') drawRect(x, y);
     } else return;
 }
 
@@ -26,7 +26,7 @@ function erasePath(x, y) {
     gCtx.save();
     gCtx.strokeStyle = '#ffffff';
     gCtx.fillStyle = '#ffffff';
-    gCtx.arc(x, y, 5, 0 , 2 * Math.PI);
+    gCtx.arc(x, y, 5, 0, 2 * Math.PI);
     gCtx.stroke();
     gCtx.closePath();
     gCtx.fill();
@@ -34,10 +34,10 @@ function erasePath(x, y) {
     gCtx.beginPath();
 }
 
-function drawBrush(x,y){
+function drawBrush(x, y) {
     gCtx.save();
     gCtx.strokeStyle = gCtx.fillStyle;
-    gCtx.arc(x, y, 10, 0 , 2 * Math.PI);
+    gCtx.arc(x, y, 10, 0, 2 * Math.PI);
     gCtx.stroke();
     gCtx.closePath();
     gCtx.fill();
@@ -45,8 +45,8 @@ function drawBrush(x,y){
     gCtx.restore();
 }
 
-function drawRect(x,y){
-    gCtx.rect(x-5,y-10,x+5,y+10);
+function drawRect(x, y) {
+    gCtx.rect(x - 5, y - 10, x + 5, y + 10);
     gCtx.stroke();
     gCtx.closePath();
     gCtx.fill();
@@ -86,11 +86,13 @@ function onToggleEraser() {
     }
 }
 
-function setRandImage(){
+function onSetRandImage() {
     let rand = parseInt(Math.random() * 4);
+    console.log(rand);
     let img = new Image();
-    img.src = `img/${rand}.jpg`
-    gCtx.drawImage(img,0,0,gCanvas.height,gCanvas.width);
+    img.src = `./img/${rand}.jpg`
+    gCtx.clearRect(0,0, gCanvas.width, gCanvas.height);
+    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
 
 

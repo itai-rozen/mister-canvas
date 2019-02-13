@@ -23,9 +23,10 @@
             <button onclick="onResetCanvas()" class="btn btn-reset">Reset</button>
             <button onclick="onToggleEraser()" class="btn btn-eraser">⌫</button>
             <select onchange="onChooseDrawTool(this.value)">
-                <option value="pencil">✏ Pencil</option>
-                <option value="brush">▆ Brush</option>
+                    <option value="pencil">✏ Pencil</option>
+                    <option value="brush">▆ Brush</option>
             </select>
+            <button onclick="onSetRandImage()" class="btn btn-insta-painter">♛ Git Pro ♛</button>
         </div>
         <canvas id="canvas" width="640" height="480" onmousedown="onMouseDown(event)" onmouseup="onMouseUp(event)" onmousemove="onMouseMovement(event)">
             
@@ -34,8 +35,6 @@
             <h4>Jesus Rights &copy;</h4>
         </footer>
     </div>
-    <script src="js/util-service.js"></script>
-    <script src="js/user-service.js"></script>
     <script src="js/user-controller.js"></script>
     <script src="js/canvas-controller.js"></script>
     <script src="js/main.js"></script>
