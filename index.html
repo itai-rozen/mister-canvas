@@ -12,15 +12,18 @@
         x:  <span class="mouse-x"></span>
         y: <span class="mouse-y"></span>
     </div>
-    <div id="app grid justify-center">
-        <header class="app-header">
+    <div id="app grid ">
+        <header class="app-header ">
             I AM A HEADER
         </header>
-        <nav class="canvas-nav" >
-            I AM A NAV
-            <!-- User Interface -->
-        </nav>
-        <canvas  width="800" height="600" id="canvas" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
+        <div class="app-menu">
+            <label>Color:
+                <input type="color" class="draw-color" onchange="onColorChange(this.value)">
+            </label>
+            <button onclick="onResetCanvas()" class="btn btn-reset">Reset</button>
+            <button onclick="onToggleEraser()" class="btn btn-eraser">⌫</button>
+        </div>
+        <canvas id="canvas" width="800" height="600" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
 
         </canvas>
         <footer class="app-footer">

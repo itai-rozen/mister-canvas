@@ -7,3 +7,7 @@
 .grid.justify-center {
     justify-items: center;
 }
+
+.grid.align-center {
+    align-items: center;
+}
