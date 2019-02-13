@@ -4,10 +4,16 @@
     display: grid;
 }
 
-.grid.justify-center {
+.justify-center {
     justify-items: center;
 }
 
-.grid.align-center {
+.align-center {
     align-items: center;
+}
+
+/* Flex */
+
+.flex {
+    display: flex;
 }

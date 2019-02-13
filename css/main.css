@@ -1,5 +1,11 @@
 @import url('./helpers.css');
 
+/* Layout */
+
+* {
+    box-sizing: border-box;
+}
+
 /* App */
 #app {
     grid-template-areas: 
@@ -12,12 +18,15 @@
 }
 
 .app-header {
+    grid-area: app-header;
+    background-color: lightgrey;
+    width: 100%;
+}
+
+.app-menu {
     grid-area: app-menu;
 }
 
-.nav-canvas {
-    grid-area: nav-canvas;
-}
 
 /* Canvas */
 
@@ -30,4 +39,6 @@
 
 .app-footer {
     grid-area: app-footer;
+    background-color: lightgrey;
+    width: 100%;
 }

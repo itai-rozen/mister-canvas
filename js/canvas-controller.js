@@ -6,23 +6,21 @@ var gIsErasing = false;
 
 
 function onMouseMovement(ev) {
-    // console.log(ev);
-    console.log(ev);
-    
     var xAxis = document.querySelector('.mouse-x');
     var yAxis = document.querySelector('.mouse-y');
     var x = ev.offsetX;
     var y = ev.offsetY;
+
     xAxis.innerText = x;
     yAxis.innerText = y;
     if (gIsBeginPath) {
         gCtx.lineTo(x, y);
         gCtx.stroke();
-    }
-
+    } else return;
 }
 
 function onTogglePath(ev) {
+    ev.stopPropagation();
     if (!gIsBeginPath) {
         var x = ev.offsetX;
         var y = ev.offsetY;
@@ -51,5 +49,13 @@ function onToggleEraser() {
     } else {
         gCtx.restore();
         gIsErasing = false;
+    }
+}
+
+function onCheckMousePos(ev) {
+    let targetId = ev.target.id;
+    if (targetId !== 'canvas') {
+        gIsBeginPath = false;
+        gCtx.closePath();
     }
 }
