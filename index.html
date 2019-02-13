@@ -25,6 +25,7 @@
             <select onchange="onChooseDrawTool(this.value)">
                     <option value="pencil">✏ Pencil</option>
                     <option value="brush">▆ Brush</option>
+                    <option value="rect">▯ Rectangle</option>
             </select>
             <button onclick="onSetRandImage()" class="btn btn-insta-painter">♛ Git Pro ♛</button>
         </div>
@@ -32,6 +33,9 @@
             
         </canvas>
         <footer class="app-footer">
+            <div class="footer-btn-container">
+                <a onclick="onDownloadImage(this)" class="btn btn-download">Download Your Masterpice</a>
+            </div>
             <h4>Jesus Rights &copy;</h4>
         </footer>
     </div>

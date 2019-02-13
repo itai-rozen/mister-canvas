@@ -19,7 +19,7 @@
     "app-menu"
     "canvas"
     "app-footer";
-    grid-template-rows: 100px 40px 2fr 60px;
+    grid-template-rows: 100px 40px 2fr 100px;
     grid-template-columns: 1fr;
     grid-row-gap: 5px;
 }

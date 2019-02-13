@@ -48,8 +48,8 @@ function drawBrush(x, y) {
 function drawRect(x, y) {
     gCtx.rect(x - 5, y - 10, x + 5, y + 10);
     gCtx.stroke();
-    gCtx.closePath();
     gCtx.fill();
+    gCtx.closePath();
     gCtx.beginPath();
 }
 
@@ -88,9 +88,8 @@ function onToggleEraser() {
 
 function onSetRandImage() {
     let rand = parseInt(Math.random() * 4);
-    console.log(rand);
     let img = new Image();
-    img.src = `./img/${rand}.jpg`
+    img.src = `./img/${rand}.jpg`;
     gCtx.clearRect(0,0, gCanvas.width, gCanvas.height);
     gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
 }
