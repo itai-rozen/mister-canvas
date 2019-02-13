@@ -9,8 +9,8 @@
 </head>
 <body onload=init()>
     <div class="mouse-tracker">
-        <span class="mouse-x"></span>
-        <span class="mouse-y"></span>
+        x:  <span class="mouse-x"></span>
+        y: <span class="mouse-y"></span>
     </div>
     <div id="app grid justify-center">
         <header class="app-header">
@@ -20,7 +20,7 @@
             I AM A NAV
             <!-- User Interface -->
         </nav>
-        <canvas width="800" height="600" id="canvas" onmousemove="onMouseMovement()">
+        <canvas  width="800" height="600" id="canvas" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
 
         </canvas>
         <footer class="app-footer">
