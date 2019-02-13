@@ -7,23 +7,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
-<body onload=init()>
+<body onload="init()" onmousemove="onCheckMousePos(event)">
     <div class="mouse-tracker">
         x:  <span class="mouse-x"></span>
         y: <span class="mouse-y"></span>
     </div>
-    <div id="app grid ">
-        <header class="app-header ">
+    <div id="app" class="grid justify-center">
+        <header class="app-header">
             I AM A HEADER
         </header>
         <div class="app-menu">
-            <label>Color:
+            <label>✎
                 <input type="color" class="draw-color" onchange="onColorChange(this.value)">
             </label>
             <button onclick="onResetCanvas()" class="btn btn-reset">Reset</button>
             <button onclick="onToggleEraser()" class="btn btn-eraser">⌫</button>
         </div>
-        <canvas id="canvas" width="800" height="600" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
+        <canvas id="canvas" width="640" height="480" onmousedown="onTogglePath(event)" onmouseup="onTogglePath(event)" onmousemove="onMouseMovement(event)">
 
         </canvas>
         <footer class="app-footer">
