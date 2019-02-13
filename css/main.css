@@ -2,16 +2,17 @@
 
 /* App */
 #app {
-    grid-template-areas: "app-header"
-    "nav-canvas"
+    grid-template-areas: 
+    "app-header"
+    "app-menu"
     "canvas"
     "app-footer";
-    grid-template-rows: 100px 30px 1fr 100px;
+    grid-template-rows: 100px 30px 2fr 100px;
     grid-template-columns: 1fr;
 }
 
 .app-header {
-    grid-area: app-header;
+    grid-area: app-menu;
 }
 
 .nav-canvas {

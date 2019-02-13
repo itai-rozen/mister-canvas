@@ -5,5 +5,9 @@
 }
 
 .grid.justify-center {
-    justify-content: center;
+    justify-items: center;
+}
+
+.grid.align-center {
+    align-items: center;
 }
