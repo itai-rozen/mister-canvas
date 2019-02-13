@@ -14,6 +14,7 @@ function onMouseMovement(ev) {
         if (gIsErasing) erasePath(x, y);
         else if (gTool === 'pencil') drawPencil();
         else if (gTool === 'brush') drawBrush(x,y);
+        else if (gTool === 'rect') drawRect(x,y);
     } else return;
 }
 
@@ -45,7 +46,11 @@ function drawBrush(x,y){
 }
 
 function drawRect(x,y){
-    gCtx.rect()
+    gCtx.rect(x-5,y-10,x+5,y+10);
+    gCtx.stroke();
+    gCtx.closePath();
+    gCtx.fill();
+    gCtx.beginPath();
 }
 
 function onMouseUp(ev) {
@@ -80,6 +85,15 @@ function onToggleEraser() {
         document.querySelector('.btn-eraser').classList.remove('clicked');
     }
 }
+
+function setRandImage(){
+    let rand = parseInt(Math.random() * 4);
+    let img = new Image();
+    img.src = `img/${rand}.jpg`
+    gCtx.drawImage(img,0,0,gCanvas.height,gCanvas.width);
+}
+
+
 
 function onCheckMousePos(ev) {
     let targetId = ev.target.id;
