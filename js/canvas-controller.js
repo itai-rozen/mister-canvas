@@ -42,6 +42,7 @@ function onResetCanvas() {
 }
 
 function onToggleEraser() {
+  
     if (!gIsErasing) {
         gCtx.save();
         gCtx.strokeStyle = '#ffffff';
@@ -51,6 +52,9 @@ function onToggleEraser() {
         gIsErasing = false;
     }
 }
+
+
+
 
 function onCheckMousePos(ev) {
     let targetId = ev.target.id;
