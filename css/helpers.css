@@ -1,0 +1,9 @@
+/* Grid */
+
+.grid {
+    display: grid;
+}
+
+.grid.justify-center {
+    justify-items: center;
+}

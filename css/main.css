@@ -1,0 +1,30 @@
+@import url('./helpers.css');
+
+/* App */
+#app {
+    grid-template-areas: "app-header"
+    "nav-canvas"
+    "canvas"
+    "app-footer";
+}
+
+.app-header {
+    grid-area: app-header;
+}
+
+.nav-canvas {
+    grid-area: nav-canvas;
+}
+
+/* Canvas */
+
+#canvas {
+    grid-area: canvas;
+    border: 1px solid blue;
+}
+
+/* Footer */
+
+.app-footer {
+    grid-area: app-footer;
+}
