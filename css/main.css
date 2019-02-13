@@ -6,6 +6,8 @@
     "nav-canvas"
     "canvas"
     "app-footer";
+    grid-template-rows: 100px 30px 1fr 100px;
+    grid-template-columns: 1fr;
 }
 
 .app-header {
