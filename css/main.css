@@ -1,5 +1,11 @@
 @import url('./helpers.css');
 
+/* Fonts */
+@font-face {
+    font-family: happymonkey;
+    src: url('../fonts/happymonkey/happymonkey.ttf');
+}
+
 /* Layout */
 
 * {
@@ -13,26 +19,41 @@
     "app-menu"
     "canvas"
     "app-footer";
-    grid-template-rows: 100px 30px 2fr 100px;
+    grid-template-rows: 100px 40px 2fr 60px;
     grid-template-columns: 1fr;
+    grid-row-gap: 5px;
 }
 
 .app-header {
     grid-area: app-header;
     background-color: lightgrey;
     width: 100%;
+    font-family: happymonkey, cursive;
+    background: linear-gradient(to right bottom,  #fc5c65, #fed330 ,#a55eea);
+    padding: 0 10px;
+    text-align: center;
 }
 
 .app-menu {
     grid-area: app-menu;
+    background-color: #45aaf2;
+    border-radius: 4px;
+    padding: 5px;
 }
 
+.app-menu input, select {
+    cursor: pointer;
+}
+
+.app-menu select {
+    height: 25px;
+}
 
 /* Canvas */
 
 #canvas {
     grid-area: canvas;
-    border: 1px solid blue;
+    border: 2px solid #3867d6;
 }
 
 /* Footer */
@@ -41,4 +62,24 @@
     grid-area: app-footer;
     background-color: lightgrey;
     width: 100%;
+    font-family: happymonkey, cursive;
+    text-align: center;
+}
+
+/* Buttons */
+
+.btn {
+    cursor: pointer;
+    border: 1px solid black;
+    border-radius: 4px;
+    min-width: 25px;
+    min-height: 25px;
+    text-align: center;
+    outline: none;
+    transition: all .3s;
+}
+
+.btn-eraser.clicked {
+    background-color: #eb3b5a;
+    box-shadow: inset 0 0 5px 2px #333;
 }

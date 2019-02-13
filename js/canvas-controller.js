@@ -7,13 +7,8 @@ var gTool = 'pencil';
 
 
 function onMouseMovement(ev) {
-    var xAxis = document.querySelector('.mouse-x');
-    var yAxis = document.querySelector('.mouse-y');
     var x = ev.offsetX;
     var y = ev.offsetY;
-
-    xAxis.innerText = x;
-    yAxis.innerText = y;
     if (gIsDrawing) {
         gCtx.lineTo(x, y);
         if (gIsErasing) erasePath(x, y);
@@ -27,20 +22,26 @@ function drawPencil() {
 }
 
 function erasePath(x, y) {
-    gCtx.arc(x, y, 10, 0 , 2 * Math.PI);
-    gCtx.stroke();
+    gCtx.save();
+    gCtx.strokeStyle = '#ffffff';
     gCtx.fillStyle = '#ffffff';
+    gCtx.arc(x, y, 5, 0 , 2 * Math.PI);
+    gCtx.stroke();
     gCtx.closePath();
     gCtx.fill();
+    gCtx.restore();
     gCtx.beginPath();
 }
 
 function drawBrush(x,y){
+    gCtx.save();
+    gCtx.strokeStyle = gCtx.fillStyle;
     gCtx.arc(x, y, 10, 0 , 2 * Math.PI);
     gCtx.stroke();
     gCtx.closePath();
     gCtx.fill();
     gCtx.beginPath();
+    gCtx.restore();
 }
 
 function drawRect(x,y){
@@ -61,9 +62,9 @@ function onMouseDown(ev) {
     gIsDrawing = true;
 }
 
-function onColorChange(color) {
-    gCtx.strokeStyle = color;
-    gCtx.fillStyle = color;
+function onColorChange(color, property) {
+    if (property === 'fill') gCtx.fillStyle = color;
+    else gCtx.strokeStyle = color;
 }
 
 function onResetCanvas() {
@@ -71,19 +72,14 @@ function onResetCanvas() {
 }
 
 function onToggleEraser() {
-  
     if (!gIsErasing) {
-        gCtx.save();
-        gCtx.strokeStyle = '#ffffff';
         gIsErasing = true
+        document.querySelector('.btn-eraser').classList.add('clicked');
     } else {
-        gCtx.restore();
         gIsErasing = false;
+        document.querySelector('.btn-eraser').classList.remove('clicked');
     }
 }
-
-
-
 
 function onCheckMousePos(ev) {
     let targetId = ev.target.id;

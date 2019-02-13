@@ -8,17 +8,17 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css">
 </head>
 <body onload="init()" onmousemove="onCheckMousePos(event)">
-    <div class="mouse-tracker">
-        x:  <span class="mouse-x"></span>
-        y: <span class="mouse-y"></span>
-    </div>
     <div id="app" class="grid justify-center">
         <header class="app-header">
-            I AM A HEADER
+            <h1>Judas' Paint Playground</h1>
+            <h5>* Jesus cries because he was not invited.</h5>
         </header>
         <div class="app-menu">
-            <label>✎
-                <input type="color" class="draw-color" onchange="onColorChange(this.value)">
+            <label>✎ Stroke
+                <input type="color" class="draw-color" onchange="onColorChange(this.value, 'stroke')">
+            </label>
+            <label>✎ Filler
+                <input type="color" class="draw-color" onchange="onColorChange(this.value, 'fill')">
             </label>
             <button onclick="onResetCanvas()" class="btn btn-reset">Reset</button>
             <button onclick="onToggleEraser()" class="btn btn-eraser">⌫</button>
@@ -31,7 +31,7 @@
 
         </canvas>
         <footer class="app-footer">
-            I AM A FOOTER
+            <h4>Jesus Rights &copy;</h4>
         </footer>
     </div>
     <script src="js/util-service.js"></script>
