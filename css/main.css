@@ -22,13 +22,13 @@
     grid-template-rows: 100px 40px 2fr 100px;
     grid-template-columns: 1fr;
     grid-row-gap: 5px;
+    font-family: happymonkey, cursive;
 }
 
 .app-header {
     grid-area: app-header;
     background-color: lightgrey;
     width: 100%;
-    font-family: happymonkey, cursive;
     background: linear-gradient(to right bottom,  #fc5c65, #fed330 ,#a55eea);
     padding: 0 10px;
     text-align: center;
@@ -62,8 +62,11 @@
     grid-area: app-footer;
     background-color: lightgrey;
     width: 100%;
-    font-family: happymonkey, cursive;
     text-align: center;
+}
+
+.footer-btn-container {
+    margin-top: 5px;
 }
 
 /* Buttons */
@@ -76,6 +79,7 @@
     min-height: 25px;
     text-align: center;
     outline: none;
+    font-family: happymonkey, cursive;
     transition: all .3s;
 }
 
