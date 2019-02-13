@@ -3,6 +3,7 @@ var gCanvas = document.querySelector('#canvas');
 var gCtx = gCanvas.getContext('2d');
 var gIsDrawing = false;
 var gIsErasing = false;
+var gTool = 'pencil';
 
 
 function onMouseMovement(ev) {
@@ -15,8 +16,19 @@ function onMouseMovement(ev) {
     yAxis.innerText = y;
     if (gIsDrawing) {
         gCtx.lineTo(x, y);
-        gCtx.stroke();
+        if (gIsErasing) erasePath(x, y);
+        else if (gTool === 'pencil') drawPencil();
     } else return;
+}
+
+function drawPencil() {
+    gCtx.stroke();
+}
+
+function erasePath(x, y) {
+    gCtx.arc(x, y, 10, 0 , 2 * Math.PI);
+    gCtx.stroke();
+    gCtx.fillStyle = '#ffffff';
 }
 
 function onMouseUp(ev) {
@@ -58,4 +70,8 @@ function onCheckMousePos(ev) {
         gIsDrawing = false;
         gCtx.closePath();
     }
+}
+
+function onChooseDrawTool(tool) {
+    console.log(tool);
 }
