@@ -4,6 +4,7 @@ var gCtx;
 var gIsDrawing;
 var gIsErasing;
 var gTool;
+var gProImages;
 
 function initCanvas() {
     gCanvas = document.querySelector('#canvas');
@@ -11,6 +12,17 @@ function initCanvas() {
     gIsDrawing = false;
     gIsErasing = false;
     gTool = 'pencil';
+    gProImages = loadImages();
+}
+
+function loadImages() {
+    let images = [];
+    for (let i = 0; i < 4; i++) {
+        let image = new Image();
+        image.src = `./img/${i}.jpg`
+        images.push(image);
+    }
+    return images;
 }
 
 function onMouseMovement(ev) {
@@ -101,10 +113,8 @@ function onToggleEraser() {
 
 function onSetRandImage() {
     let rand = parseInt(Math.random() * 4);
-    let img = new Image();
-    img.src = `./img/${rand}.jpg`;
     gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
-    gCtx.drawImage(img, 0, 0, gCanvas.width, gCanvas.height);
+    gCtx.drawImage(gProImages[rand], 0, 0, gCanvas.width, gCanvas.height);
 }
 
 function onCheckMousePos(ev) {
